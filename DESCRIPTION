@@ -5,7 +5,11 @@ Authors@R:
     c(person(given = "Dylan",
            family = "Li",
            role = c("aut", "cre"),
-           email = "dli59@calpoly.edu")
+           email = "dli59@calpoly.edu"),
+      person(given = "Jack",
+           family = "Brown",
+           role = c("aut", "cre"),
+           email = "jbrow171@calpoly.edu")
            )
 Description: What the package does (one paragraph).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
