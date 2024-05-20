@@ -11,12 +11,6 @@
 #' @importFrom ggplot2 ggplot, geom_point, geom_smooth, labs
 #'
 #' @export
-
-install.packages("lmtest")
-library(lmtest)
-library(ggplot2)
-library(magrittr)
-
 check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE){
   model <- lm(y ~ x)
 
@@ -30,7 +24,14 @@ check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE){
 
 # also try rainbow test?
 
-# helper function
+#' Helper function: Creates the predicted vs. residuals plot
+#'
+#' @param preds A single predictor variable.
+#' @param residuals A numeric residual in a response variable.
+#'
+#' @return A residual vs. predicted plot
+#'
+#' @importFrom ggplot2 ggplot, geom_point, geom_smooth, labs
 
 make_residual_plot <- function(preds, residuals){
   data.frame(preds = preds, residuals = residuals) %>%
