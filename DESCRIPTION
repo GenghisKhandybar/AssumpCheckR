@@ -4,12 +4,12 @@ Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Dylan",
            family = "Li",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "dli59@calpoly.edu"),
       person(given = "Jack",
            family = "Brown",
-           role = c("aut", "cre"),
-           email = "jbrow171@calpoly.edu")
+           role = c("aut"),
+           email = "jbrow171@calpoly.edu"),
       person(given = "William",
            family = "Medwid",
            role = c("aut", "cre"),
