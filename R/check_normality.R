@@ -41,26 +41,21 @@ check_normality <- function(x, test_type = "SW", include_graph = TRUE, sig_level
   }
 
   # Check if 'sig_level' is numeric and between 0 and 1
-  if (!is.numeric(sig_level)) {
-    stop("Input 'sig_level' must be numeric and between 0 and 1.")
-  if (!(sig_level > 0 && sig_level < 1))
+  if (!(sig_level > 0 && sig_level < 1)) {
     stop("Input 'sig_level' must be numeric and between 0 and 1.")
   }
 
   # Include interpretation
-  if (include_interpretation && test_type == "SW") {
+  if (include_interpretation) {
+    if (test_type == "SW") {
+      test_name <- "Shapiro-Wilk"}
+    else if (test_type == "AD") {
+      test_name <- "Anderson-Darling"}
+
     if (result$p.value > sig_level) {
-      cat("According to the Shapiro-Wilk test for normality, at the", sig_level, "significance level, we do not have evidence to conclude that x is non-normal.\n")
-    } else {
-      cat("According to the Shapiro-Wilk test for normality, at the", sig_level, "significance level, we have evidence to conclude that x is non-normal.\n")
-    }
-  }
-  if (include_interpretation && test_type == "AD") {
-    if (result$p.value > sig_level) {
-      cat("According to the Anderson-Darling test for normality, at the", sig_level, "significance level, we do not have evidence to conclude that x is non-normal.\n")
-    } else {
-      cat("According to the Anderson-Darling test for normality, at the", sig_level, "significance level, we have evidence to conclude that x is non-normal.\n")
-    }
+      cat(sprintf("According to the %s test for normality, at the %.2f significance level,\n we do not have evidence to conclude that x is non-normal.\n", test_name, sig_level))}
+    else {
+      cat(sprintf("According to the %s test for normality, at the %.2f significance level,\n we have evidence to conclude that x is non-normal.\n", test_name, sig_level))}
   }
 
   # Return the test result
