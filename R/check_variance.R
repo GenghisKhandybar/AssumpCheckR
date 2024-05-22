@@ -29,7 +29,7 @@ check_variance <- function(y, x, test_type = "Breusch", sig_level = 0.05,
     stop("Input 'y' must be numeric")
   }
   if(!is.numeric(sig_level)){
-    stop("Input 'y' must be numeric")
+    stop("Input 'sig_level' must be numeric and between 0 and 1.")
   }
   if(!rapportools::is.boolean(plot)){
     stop("Input 'plot' must be boolean")
@@ -55,10 +55,8 @@ check_variance <- function(y, x, test_type = "Breusch", sig_level = 0.05,
   }
 
 
-  # Check if 'sig_level' is numeric and between 0 and 1
-  if (!is.numeric(sig_level)) {
-    stop("Input 'sig_level' must be numeric and between 0 and 1.")
-    if (!(sig_level > 0 && sig_level < 1))
+  # Check if 'sig_level' is between 0 and 1
+  if (!(sig_level > 0 && sig_level < 1)) {
       stop("Input 'sig_level' must be numeric and between 0 and 1.")
   }
 
