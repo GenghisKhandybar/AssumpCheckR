@@ -1,8 +1,8 @@
 #install.packages("nortest")
-#library(nortest)
+library(nortest)
 
 #install.packages("rcompanion")
-#library(rcompanion)
+library(rcompanion)
 
 
 check_normality <- function(x, test_type = "SW", include_graph = TRUE, sig_level = 0.05, include_interpretation = TRUE) {
