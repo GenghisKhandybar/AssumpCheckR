@@ -35,9 +35,9 @@ check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE){
   # Generate graph if desired
   if(include_graph){
     graph <- make_residual_plot(model$fitted.values, model$residuals)
-    list(test_result, interpretation, graph)
+    return(list(test_result, interpretation, graph))
   }
-  list(test_result, interpretation)
+  return(list(test_result, interpretation))
 }
 
 #' Helper function: Creates the predicted vs. residuals plot
