@@ -1,11 +1,21 @@
-#install.packages("nortest")
-#library(nortest)
+#' Checks the normality assumption of a variable.
+#'
+#' @param x A single variable.
+#' @param test_type The type of normality test to be used. Shapiro-Wilk by default
+#' @param sig_level The significance level for the test. 0.05 by default.
+#' @param include_graph Whether to include histogram with normal distribution overlay. TRUE by default.
+#' @param include_interpretation Whether to include interpretation
+#'
+#' @return A test and resulting p-value, plot (optional), and interpretation (optional)
+#'
+#' @importFrom nortest ad.test
+#' @importFrom rcompanion plotNormalHistogram
+#'
+#' @export
 
-#install.packages("rcompanion")
-#library(rcompanion)
 
-
-check_normality <- function(x, test_type = "SW", include_graph = TRUE, sig_level = 0.05, include_interpretation = TRUE) {
+check_normality <- function(x, test_type = "SW", sig_level = 0.05, include_graph = TRUE,
+                            include_interpretation = TRUE) {
 
   # Extract variable name
   var_name <- deparse(substitute(x))
