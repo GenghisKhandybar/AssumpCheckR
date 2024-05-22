@@ -51,7 +51,9 @@ make_residual_plot <- function(preds, residuals){
   data.frame(preds = preds, residuals = residuals) %>%
     ggplot(aes(x = preds, y = residuals)) +
       geom_point() +
-      geom_smooth() +
+      geom_smooth(method = loess, formula = y ~ x) +
       labs(x = "Predicted",
-           y = "Residual")
+           y = "",
+           title = "Predicted vs. Residuals Plot") +
+    theme_bw()
 }
