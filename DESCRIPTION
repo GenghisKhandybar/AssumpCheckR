@@ -4,19 +4,25 @@ Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Dylan",
            family = "Li",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "dli59@calpoly.edu"),
       person(given = "Jack",
            family = "Brown",
+           role = c("aut"),
+           email = "jbrow171@calpoly.edu"),
+      person(given = "William",
+           family = "Medwid",
            role = c("aut", "cre"),
-           email = "jbrow171@calpoly.edu")
+           email = "wmedwid@calpoly.edu")
            )
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: This package makes it easier to check linear model assumptions.
+License: use_mit_license()
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+
+Imports: 
+    magrittr
