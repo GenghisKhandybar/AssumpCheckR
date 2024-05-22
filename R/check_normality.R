@@ -42,7 +42,7 @@ check_normality <- function(x, test_type = "SW", sig_level = 0.05, include_graph
   # Print the test result
   cat(sprintf("Test type: %s\n", if (test_type == "SW") "Shapiro-Wilk"
               else "Anderson-Darling"))
-  cat(sprintf("Null Hypothesis: Data follows a normal distribution\n"))
+  cat(sprintf("Null Hypothesis: Data is normally distributed\n"))
   cat(sprintf("P-value: %f\n", result$p.value))
 
   # Generate histogram with normal distribution overlay if include_graph is TRUE
