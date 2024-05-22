@@ -5,7 +5,8 @@ library(nortest)
 library(rcompanion)
 
 
-check_normality <- function(x, test_type = "SW", include_graph = TRUE, sig_level = 0.05, include_interpretation = TRUE) {
+check_normality <- function(x, test_type = "SW", include_graph = TRUE,
+                            sig_level = 0.05, include_interpretation = TRUE) {
 
   # Extract variable name
   var_name <- deparse(substitute(x))
