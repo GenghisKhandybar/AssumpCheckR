@@ -14,14 +14,30 @@
 check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE){
   model <- lm(y ~ x)
 
-  test_result <- resettest(model)
+  test_result <- raintest(model)
 
+  # Write interpretations based on the p-value and significance level
+  if(test_result$p.value < sig_level){
+    interpretation <- paste0("With p < ", sig_level,
+                             ", we are confident that removing data points from this model ",
+                             "improves the fit more than what would be expected if there were a ",
+                             "linear relationship. Therefore, we are ", 100*(1-sig_level),
+                             "% confident that the relationship between x and y is not linear.")
+  } else {
+    interpretation <- paste0("With p > ", sig_level,
+                             ", we are have insufficient evidence to conclude that removing data points from this model ",
+                             "improves the fit more than what would be expected if there were a ",
+                             "linear relationship. Therefore, we do not have sufficient evidence to suggest that",
+                             "that the relationship between x and y is not linear.")
+  }
+
+  # Generate graph if desired
   if(include_graph){
     graph <- make_residual_plot(model$fitted.values, model$residuals)
   }
   list(test_result, graph)
 }
-
+# lack of fit test
 # also try rainbow test?
 
 #' Helper function: Creates the predicted vs. residuals plot
