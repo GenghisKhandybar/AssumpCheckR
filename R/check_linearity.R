@@ -27,7 +27,7 @@ check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE){
     interpretation <- paste0("With p > ", sig_level,
                              ", we are have insufficient evidence to conclude that removing data points from this model ",
                              "improves the fit more than what would be expected if there were a ",
-                             "linear relationship. Therefore, we do not have sufficient evidence to suggest that",
+                             "linear relationship. Therefore, we do not have evidence to suggest that",
                              "that the relationship between x and y is not linear.")
   }
 
@@ -35,10 +35,8 @@ check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE){
   if(include_graph){
     graph <- make_residual_plot(model$fitted.values, model$residuals)
   }
-  list(test_result, graph)
+  list(test_result, interpretation, graph)
 }
-# lack of fit test
-# also try rainbow test?
 
 #' Helper function: Creates the predicted vs. residuals plot
 #'
