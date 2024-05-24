@@ -4,6 +4,7 @@
 #' @param y A numeric response variable.
 #' @param sig_level The significance level for the test. 0.05 by default.
 #' @param include_graph Whether to include the residual plot. TRUE by default.
+#' @param include_interpretation Whether to include an interpretation of the results.
 #'
 #' @return A test, interpretation, and plot (optional)
 #'
