@@ -10,3 +10,17 @@ library(testthat)
 library(AssumpCheckR)
 
 test_check("AssumpCheckR")
+
+data(iris)
+library(lmtest)
+library(tidyverse)
+check_linearity(iris$Sepal.Length, iris$Sepal.Width)
+
+model <- lm(iris$Sepal.Length ~ iris$Sepal.Width)
+
+test_result <- raintest(model)
+
+if(include_graph){
+  graph <- make_residual_plot(model$fitted.values, model$residuals)
+}
+list(test_result, graph)
