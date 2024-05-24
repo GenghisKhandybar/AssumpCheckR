@@ -12,7 +12,8 @@
 #'
 #' @export
 
-check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE){
+check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE,
+                            include_interpretation = TRUE){
   # Check if inputs are of the correct type
   if(!is.numeric(x)){
     stop("Input 'x' must be numeric")
@@ -32,10 +33,10 @@ check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE){
 
   model <- lm(y ~ x)
 
-  test_result <- lmtest::raintest(model)
+  test <- lmtest::raintest(model)
 
   # Write interpretations based on the p-value and significance level
-  if(test_result$p.value < sig_level){
+  if(test$p.value < sig_level){
     interpretation <- paste0("With p < ", sig_level,
                              ", we are confident that removing data points from this model ",
                              "improves the fit more than what would be expected if there were a ",
@@ -51,10 +52,19 @@ check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE){
 
   # Generate graph if desired
   if(include_graph){
-    graph <- make_residual_plot(model$fitted.values, model$residuals)
-    return(list(test_result, interpretation, graph))
+    plot_result <- make_residual_plot(model$fitted.values, model$residuals)
   }
-  return(list(test_result, interpretation))
+
+  # Returns what is requested
+  if (include_interpretation && include_graph){
+    return(list(test.result = test, plot = plot_result, interpretation = interpretation))
+  } else if (include_interpretation) {
+    return(list(test.result = test, interpretation = interpretation))
+  } else if (include_graph) {
+    return(list(test.result = test, plot = plot_result))
+  } else {
+    return(list(test.result = test))
+  }
 }
 
 #' Helper function: Creates the predicted vs. residuals plot
