@@ -10,6 +10,7 @@
 #'
 #' @importFrom lmtest raintest
 #' @importFrom ggplot2 ggplot, geom_point, geom_smooth, labs
+#' @importFrom rapportools is.boolean
 #'
 #' @export
 
@@ -25,11 +26,11 @@ check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE,
   if(!is.numeric(sig_level)){
     stop("Input 'sig_level' must be numeric and between 0 and 1.")
   }
-  if(!rapportools::is.boolean(plot)){
-    stop("Input 'plot' must be boolean")
+  if(!rapportools::is.boolean(include_graph)){
+    stop("Input 'include_graph' must be boolean")
   }
-  if(!rapportools::is.boolean(interp)){
-    stop("Input 'interp' must be boolean")
+  if(!rapportools::is.boolean(include_interpretation)){
+    stop("Input 'include_interpretation' must be boolean")
   }
 
   model <- lm(y ~ x)
