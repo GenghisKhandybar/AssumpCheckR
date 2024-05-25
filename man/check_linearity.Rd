@@ -4,7 +4,13 @@
 \alias{check_linearity}
 \title{Checks the linearity assumption of an x and y variable.}
 \usage{
-check_linearity(x, y, sig_level = 0.05, include_graph = TRUE)
+check_linearity(
+  x,
+  y,
+  sig_level = 0.05,
+  include_graph = TRUE,
+  include_interpretation = TRUE
+)
 }
 \arguments{
 \item{x}{A single predictor variable.}
@@ -14,6 +20,8 @@ check_linearity(x, y, sig_level = 0.05, include_graph = TRUE)
 \item{sig_level}{The significance level for the test. 0.05 by default.}
 
 \item{include_graph}{Whether to include the residual plot. TRUE by default.}
+
+\item{include_interpretation}{Whether to include an interpretation of the results.}
 }
 \value{
 A test, interpretation, and plot (optional)
