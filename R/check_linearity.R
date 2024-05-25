@@ -9,7 +9,7 @@
 #' @return A test, interpretation, and plot (optional)
 #'
 #' @importFrom lmtest raintest
-#' @importFrom ggplot2 ggplot, geom_point, geom_smooth, labs
+#' @importFrom ggplot2 ggplot geom_point geom_smooth labs
 #' @importFrom rapportools is.boolean
 #'
 #' @export
@@ -76,7 +76,7 @@ check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE,
 #'
 #' @return A residual vs. predicted plot
 #'
-#' @importFrom ggplot2 ggplot, geom_point, geom_smooth, labs
+#' @importFrom ggplot2 ggplot geom_point geom_smooth labs
 
 make_residual_plot <- function(preds, residuals){
   data.frame(preds = preds, residuals = residuals) %>%
