@@ -34,7 +34,6 @@ check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE,
   }
 
   model <- lm(y ~ x)
-
   test <- lmtest::raintest(model)
 
   # Write interpretations based on the p-value and significance level
@@ -68,6 +67,7 @@ check_linearity <- function(x, y, sig_level = 0.05, include_graph = TRUE,
     return(list(test.result = test))
   }
 }
+
 
 #' Helper function: Creates the predicted vs. residuals plot
 #'
