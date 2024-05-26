@@ -18,6 +18,6 @@ test_that("check_variance string x", {
 
 test_that("check_variance number include_interpretation", {
 
-  expect_error(check_variance(mtcars$mpg, mtcars$disp, include_interpretation = 3), "Input 'interp' must be boolean")
+  expect_error(check_variance(mtcars$mpg, mtcars$disp, include_interpretation = 3), "Input 'include_interpretation' must be boolean")
 
 })
