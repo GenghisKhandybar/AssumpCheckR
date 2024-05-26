@@ -9,8 +9,8 @@ check_variance(
   x,
   test_type = "Breusch",
   sig_level = 0.05,
-  plot = TRUE,
-  interp = TRUE
+  include_graph = TRUE,
+  include_interpretation = TRUE
 )
 }
 \arguments{
@@ -20,10 +20,10 @@ check_variance(
 
 \item{sig_level}{Significance level for the variance test}
 
-\item{plot}{Option to return a plot of the fitted residuals
+\item{include_graph}{Option to return a plot of the fitted residuals
 Defaults to \code{TRUE}}
 
-\item{interp}{Option to return an interpretation of the test
+\item{include_interpretation}{Option to return an interpretation of the test
 Defaults to \code{TRUE}}
 
 \item{data}{The data from which the y and x variable belong to}
