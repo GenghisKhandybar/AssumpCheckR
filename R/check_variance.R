@@ -7,9 +7,9 @@
 #' Defaults to "Breusch"
 #' Option to change to "White"
 #' @param sig_level Significance level for the variance test
-#' @param plot Option to return a plot of the fitted residuals
+#' @param include_graph Option to return a plot of the fitted residuals
 #' Defaults to `TRUE`
-#' @param interp Option to return an interpretation of the test
+#' @param include_interpretation Option to return an interpretation of the test
 #' Defaults to `TRUE`
 #'
 #' @return A candy gram announcement
@@ -19,7 +19,7 @@
 #'
 #' @export
 check_variance <- function(y, x, test_type = "Breusch", sig_level = 0.05,
-                           plot=TRUE, interp=TRUE) {
+                           include_graph=TRUE, include_interpretation=TRUE) {
 
   # Check if inputs are of the correct type
   if(!is.numeric(x)){
@@ -31,11 +31,11 @@ check_variance <- function(y, x, test_type = "Breusch", sig_level = 0.05,
   if(!is.numeric(sig_level)){
     stop("Input 'sig_level' must be numeric and between 0 and 1.")
   }
-  if(!rapportools::is.boolean(plot)){
-    stop("Input 'plot' must be boolean")
+  if(!rapportools::is.boolean(include_graph)){
+    stop("Input 'include_graph' must be boolean")
   }
-  if(!rapportools::is.boolean(interp)){
-    stop("Input 'interp' must be boolean")
+  if(!rapportools::is.boolean(include_interpretation)){
+    stop("Input 'include_interpretation' must be boolean")
   }
 
   model = lm(y ~ x)
@@ -50,7 +50,7 @@ check_variance <- function(y, x, test_type = "Breusch", sig_level = 0.05,
   }
 
   # If requested, makes a plot
-  if(plot){
+  if(include_graph){
     plot_result = make_plot(model)
   }
 
@@ -68,7 +68,7 @@ check_variance <- function(y, x, test_type = "Breusch", sig_level = 0.05,
   }
 
   # If requested, makes an interpretation to the test result
-  if (interp){
+  if (include_interpretation){
     if (pval >= sig_level) {
       interpretation = make_interpretation(test_type, sig_level, TRUE)
     } else {
@@ -77,11 +77,11 @@ check_variance <- function(y, x, test_type = "Breusch", sig_level = 0.05,
   }
 
   # Returns what is requested
-  if (interp && plot){
+  if (include_interpretation && include_graph){
     return(list(test.result = test, plot = plot_result, interpretation = interpretation))
-  } else if (interp) {
+  } else if (include_interpretation) {
     return(list(test.result = test, interpretation = interpretation))
-  } else if (plot) {
+  } else if (include_graph) {
     return(list(test.result = test, plot = plot_result))
   } else {
     return(list(test.result = test))

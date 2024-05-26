@@ -1,5 +1,5 @@
 test_that("check_variance basic", {
-  my_result <- check_variance(mtcars$mpg, mtcars$disp, plot = FALSE)
+  my_result <- check_variance(mtcars$mpg, mtcars$disp, include_graph = FALSE)
 
 
   model = lm(mtcars$mpg ~ mtcars$disp)
@@ -16,8 +16,8 @@ test_that("check_variance string x", {
 
 })
 
-test_that("check_variance number interp", {
+test_that("check_variance number include_interpretation", {
 
-  expect_error(check_variance(mtcars$mpg, mtcars$disp, interp = 3), "Input 'interp' must be boolean")
+  expect_error(check_variance(mtcars$mpg, mtcars$disp, include_interpretation = 3), "Input 'interp' must be boolean")
 
 })
