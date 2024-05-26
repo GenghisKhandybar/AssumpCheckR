@@ -1,5 +1,5 @@
 Package: AssumpCheckR
-Title: What the Package Does (One Line, Title Case)
+Title: Check Common Statistical Assumptions
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Dylan",
